@@ -38,9 +38,15 @@
         route: "This level of influence can support deliberation. Continue to confirm whether a deliberative process is the right instrument here."
     },
     {
-        key: "Collaborate", lo: 4, hi: 5, color: "var(--l4)", text: "var(--l4t)", proceed: true,
+        key: "Collaborate", lo: 4, hi: 4.99, color: "var(--l4)", text: "var(--l4t)", proceed: true,
         goal: "To partner with the public in each aspect of the decision, including the development of alternatives and the identification of the preferred solution.",
         promise: "We will look for advice and innovation in formulating solutions, and incorporate your advice and recommendations into the decisions to the maximum extent possible.",
+        route: "This level of influence strongly supports deliberation. Continue to design a fit-for-purpose deliberative process."
+    },
+    {
+        key: "Empower", lo: 5, hi: 5, color: "var(--l5)", text: "var(--l5t)", proceed: true,
+        goal: "",
+        promise: "",
         route: "This level of influence strongly supports deliberation. Continue to design a fit-for-purpose deliberative process."
     }
     ];
@@ -124,7 +130,13 @@
     let answeredCount = $derived(userState.scorer.answers.filter((v) => v !== null).length);
     let score = $derived(answeredCount === 10 ? userState.scorer.answers.reduce((a, b) => a + b, 0) / 10 : null);
     let level = $derived(score !== null ? levelFor(score) : null);
-    let needlePct = $derived(score !== null ? ((score - 1) / 4) * 100 : 0);
+    let needlePct = $derived.by(() => {
+        if (score === null) return 0;
+        const idx = Math.min(Math.floor(score), 5) - 1;   // 0..4 → which segment
+        if (idx === 4) return 90;                          // Empower: exactly 5, centre of last segment
+        const within = score - Math.floor(score);          // 0..0.99 through the band
+        return idx * 20 + within * 20;                     // segment start + progress inside it
+    });
     let engContinueDisabled = $derived(answeredCount < 10);
 
     function levelFor(s) {
@@ -297,6 +309,7 @@
                     <div class="seg s2">Consult</div>
                     <div class="seg s3">Involve</div>
                     <div class="seg s4">Collaborate</div>
+                    <div class="seg s5">Empower</div>
                     <div class="needle" class:hidden={score === null} style="left:{needlePct}%"></div>
                 </div>
                 </div>
@@ -644,7 +657,7 @@
     .cell.lvl2 input:checked + label { background: var(--l2); border-color: var(--l2); }
     .cell.lvl3 input:checked + label { background: var(--l3); border-color: var(--l3); }
     .cell.lvl4 input:checked + label { background: var(--l4); border-color: var(--l4); }
-    .cell.lvl5 input:checked + label { background: var(--l4); border-color: var(--l4); }
+    .cell.lvl5 input:checked + label { background: var(--l5); border-color: var(--l5); }
     .cell input:checked + label { transform: scale(1.06); }
     .cell input:checked + label::after { content: "●"; font-size: 10px; color: rgba(0,0,0,.32); }
     .cell.lvl4 input:checked + label::after, .cell.lvl5 input:checked + label::after { color: rgba(255,255,255,.7); }
@@ -656,12 +669,13 @@
     .meter-score .num { font-family: "IBM Plex Mono", monospace; font-size: 30px; color: var(--ink); }
     .meter-score .lab { font-size: 13px; color: var(--muted); }
     .meter-level { font-family: BricolageGrotesque, sans-serif; font-weight: 700; font-size: 20px; }
-    .bar { position: relative; height: 34px; border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .bar { position: relative; height: 34px; border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: repeat(5, 1fr); }
     .bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 600; }
     .bar .s1 { background: var(--l1); color: var(--l1t); }
     .bar .s2 { background: var(--l2); color: var(--l2t); }
     .bar .s3 { background: var(--l3); color: var(--l3t); }
     .bar .s4 { background: var(--l4); color: var(--l4t); }
+    .bar .s5 { background: var(--l5); color: var(--l5t); }
     .needle { position: absolute; top: -5px; bottom: -5px; width: 3px; background: var(--ink); border-radius: 3px; left: 0; transition: left .5s cubic-bezier(.2,.7,.2,1); box-shadow: 0 0 0 3px rgba(255,255,255,.7); }
     .needle.hidden { opacity: 0; }
 
