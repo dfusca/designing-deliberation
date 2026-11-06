@@ -12,8 +12,18 @@
 
 <HeaderBar/>
 <div class="page">
-	<h1>Designing Deliberation</h1>
-	<p>This will be copy explaining the framework. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<h3>How do you design engagement for decisions that stick? </h3>
+	<p>
+		A tool for anyone designing a process that includes the public, from engagement practitioners to policy and planning teams. 
+	</p>
+
+	<ol>
+		<li><strong>Find your level.</strong> How much should the public shape this decision? </li>
+		<li><strong>Decide how deep to go.</strong> Does this decision need the public to work through hard trade-offs, or will a lighter process hold up? </li>
+		<li><strong>Frame the process.</strong> Map the stages of your process and what each one should deliver.  </li>
+		<li><strong>Design how people decide together.</strong> If the answer to step 2 is yes, plan how that happens. </li>
+	</ol>
+
 	<div class="choices-container">
 		<a href="/designing-deliberation/case-studies" class="choice-box beginner"
 			onclick={() => setBeginner(true)}>

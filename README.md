@@ -6,7 +6,7 @@ A process framework development tool created by School of Cities in collaboratio
 
 ### Installing this locally
 
-- Install VS Code or an IDE of your choice
+- Install [VS Code](https://code.visualstudio.com/download) or an IDE of your choice
 - Install [Node](https://nodejs.org/en/download)
 - Install [Git](https://git-scm.com/install/windows)
 - Install [GitHub Desktop](https://desktop.github.com/download/)
