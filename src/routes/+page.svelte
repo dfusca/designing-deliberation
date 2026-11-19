@@ -27,7 +27,7 @@
 	<div class="choices-container">
 		<a href="/designing-deliberation/case-studies" class="choice-box beginner"
 			onclick={() => setBeginner(true)}>
-			<h2> I am a beginner</h2>
+			<h2> I am a beginner!</h2>
 			<p>Guide me through the process step-by-step!</p>
 		</a>
 
