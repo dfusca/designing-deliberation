@@ -22,7 +22,9 @@
 
 <HeaderBar page={pageTitle}/>
 <main>
+	<!-- [ADD COPY CHANGES FROM HERE] -->
 	<h1>{pageTitle}</h1>
+	<p>ADD A DESCRIPTION ABOUT THIS PAGE HERE</p>
 	{#if resources}
 		{#each Object.keys(resources) as category}
 			<div class="category">
@@ -38,6 +40,7 @@
 	{#if userMode.beginner}
 		<ToolCallout page={pageTitle}/>
 	{/if}
+	<!-- [ADD COPY CHANGES TO HERE] -->
 </main>
 
 <style>
