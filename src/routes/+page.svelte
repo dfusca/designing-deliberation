@@ -12,6 +12,7 @@
 
 <HeaderBar/>
 <div class="page">
+	<!-- [ADD COPY CHANGES FROM HERE] -->
 	<h3>How do you design engagement for decisions that stick? </h3>
 	<p>
 		A tool for anyone designing a process that includes the public, from engagement practitioners to policy and planning teams. 
@@ -37,6 +38,7 @@
 			<p>Take me directly to the framework builder tool!</p>
 		</a>
 	</div>
+	<!-- ADD COPY CHANGES TO HERE -->
 </div>
 
 <style>

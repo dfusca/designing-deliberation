@@ -174,6 +174,7 @@
 
 <HeaderBar page={"Interactive Tool"}/>
 <main class="tool-option-select">
+	<!-- [ADD COPY CHANGES FROM HERE] -->
     <h1>What do you want to build?</h1>
     <div class="choices-container">
         <a class="choice-box" href={"/designing-deliberation/interactive-tool/strategy"}>
@@ -185,6 +186,8 @@
             <p>Just the framework builder</p>
         </a>
     </div>
+    
+	<!-- [ADD COPY CHANGES TO HERE] -->
 </main>
 
 <style>
